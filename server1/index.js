@@ -1,0 +1,32 @@
+"use strict";
+
+const express = require('express');
+const app = express();
+const port = 3000;
+
+let requestCounter = 0;
+
+app.use(express.static("public"));
+
+//app.get('/', (req, res) => {
+//  res.send('Hello World!');
+//});
+
+app.get("/catinfo", (req, res) => {
+    const cat = {
+        name: "cat",
+        birthdate: "2021-12-01",
+        weight: 7,
+      };
+    res.json(cat);
+});
+
+app.get("/test", (request, response) => {
+    console.log("testing");
+    requestCounter++;
+    response.send("<h1>TEXT page</h1><p>" + requestCounter + "<p>");
+});
+
+app.listen(port, () => {
+    console.log(`Example app listening on port ${port}`);
+});

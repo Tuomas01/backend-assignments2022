@@ -11,4 +11,4 @@ console.log("Hello world, I'm Node");
 let output = "Testing nodemon, using lodash to convert this to camel case";
 console.log(output);
 output = _.camelCase(output);
-console.log(output)
+console.log(output) 
