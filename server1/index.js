@@ -1,5 +1,6 @@
 "use strict";
 
+// creating the express framework using localhost:3000
 const express = require('express');
 const app = express();
 const port = 3000;
@@ -13,6 +14,7 @@ app.set("view engine", "pug");
 //  res.send('Hello World!');
 //});
 
+// The info about the cat in json format, which is given as a response when /catinfo is requested
 app.get("/catinfo", (req, res) => {
     const cat = {
         name: "cat",
@@ -22,6 +24,7 @@ app.get("/catinfo", (req, res) => {
     res.json(cat);
 });
 
+// page for testing pug, pug is an easy way to create html code
 app.get("/test", (request, response) => {
     console.log("testing");
     requestCounter++;
