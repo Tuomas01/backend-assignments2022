@@ -22,8 +22,12 @@ const getUser = (req, res) => {
   }
 };
 
+const createUser = (req, res) => {
+  const userInfo = `Username: ${req.body.name}, email: ${req.body.email};`
+  res.send('Added a new user. ' + userInfo)
+};
+
 const modifyUser = (req, res) => {};
-const createUser = (req, res) => {};
 const deleteUser = (req, res) => {};
 
 module.exports = {
