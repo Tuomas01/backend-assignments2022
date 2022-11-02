@@ -2,27 +2,16 @@
 // catRoute
 const express = require('express');
 const router = express.Router();
+const catController = require('../controllers/catController');
 
-router.get('/', (req, res) => {
-  //console.log(req); // <- req has all the data about the request
-  res.send('From this endpoint you can get cats.')
-});
+router.get('/', catController.getCats);
 
-router.post('/', (req, res) => {
-  res.send('From this endpoint you can add more cats.');
-});
+router.get('/:catId', catController.getCat);
 
-router.get('/:catId', (req, res) => {
-  console.log(req.params);
-  res.send('From this endpoint you can a cat with an id: ' + req.params.catId);
-});
+router.post('/', catController.createCat);
 
-router.put('/', (req, res) => {
-  res.send('From this endpoint you can edit cats');
-});
+router.put('/', catController.modifyCat);
 
-router.delete('/', (req, res) => {
-  res.send('From this endpoint you can delete cats');
-});
+router.delete('/', catController.deleteCat);
 
 module.exports = router;

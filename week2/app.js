@@ -1,8 +1,8 @@
 'use strict';
 const express = require('express');
 const app = express();
-const catRouter = require('./routes/catRoute')
-const userRouter = require('./routes/userRout')
+const catRouter = require('./routes/catRoute');
+const userRouter = require('./routes/userRoute');
 
 const port = 3000;
 
