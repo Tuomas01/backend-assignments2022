@@ -10,6 +10,9 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+// server uploaded files
+app.use(express.static("uploads"));
+
 app.use('/cat', catRouter);
 app.use('/user', userRouter);
 
