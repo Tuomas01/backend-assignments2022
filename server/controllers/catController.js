@@ -19,7 +19,9 @@ const getCat = async (req, res) => {
 
 const createCat = async (req, res) => {
   const errors = validationResult(req);
-  if (errors.isEmpty() && req.file) {
+  if (!req.file) {
+    res.status(400).json({message: "file missing or invalid"});
+  } else if (errors.isEmpty()) {
     const cat = req.body;
     cat.filename = req.file.filename;
     console.log("creating a cat", cat);

@@ -7,7 +7,7 @@ const catController = require('../controllers/catController');
 const {body} = require ('express-validator');
 
 const fileFilter = (req, file, cb) => {
-  const acceptedTypes = ['image/png', 'image/gif'];
+  const acceptedTypes = ['image/jpeg', 'image/png', 'image/gif'];
   if (acceptedTypes.includes(file.mimetype)) {
     cb(null, true);
   } else {
@@ -22,7 +22,7 @@ router.get('/', catController.getCats)
   .get('/:catId', catController.getCat)
   .post('/', 
     upload.single('cat'),
-    body('name').isAlphanumeric(),
+    body('name').isAlphanumeric().trim().escape(),
     body('birthdate').isDate(),
     body('weight').isFloat({min: 0.1, max: 30}),
     body('owner').isInt({min: 1}),
