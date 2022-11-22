@@ -1,26 +1,28 @@
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<script defer src="script.js"></script>
-<title>Task 2 - teacher example</title>
-<title>front-end js Task 2 - teacher example</title>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script defer src="js/script.js"></script>
+  <title>Week 3 assignment 2</title>
 </head>
 <body>
-<h1>My JS application</h1>
-<figure>
-  <img />
-  <figcaption></figcaption>
-</figure>
-<script>
-  console.log("put your code in separate js file, please.");
-</script>
-<h1>TV Maze search example</h1>
-<form id="search-form">
-  <input type="text" name="q" />
-  <button type="submit">Go</button>
-</form>
-
-<div id="results">
-</div>
-
+  <div>
+    <h1>Week 3 assignment 2 AJAX</h1>
+    <h2>Give a name of a tv series</h2>
+  </div>
+  <div>
+    <form id="search-form">
+      <input type="text" id="search-field" />
+      <button type="button" onclick="getAllShows()">Go</button>
+    </form>
+  </div>
+  <div id="tvShowsDiv">
+    <img src="" id="img" style="margin-top: 20px"/>
+    <p id="name"></p>
+    <a id="url"></a>
+    <p id="summary"></p>
+  </div>
 </body>
 </html>
