@@ -23,13 +23,14 @@ const createCat = async (req, res) => {
     res.status(400).json({message: "file missing or invalid"});
   } else if (errors.isEmpty()) {
     const cat = req.body;
+    cat.owner = req.user.user_id;
     cat.filename = req.file.filename;
     console.log("creating a cat", cat);
     const catId = await catModel.addCat(cat, res);
     res.status(201).json({message: "succesfully created a cat", catId});
   } else {
     console.log("validation errors:", errors);
-    res.status(400).json({message: "cat creation failed", errors: errors.array()})
+    res.status(400).json({message: "cat creation failed", errors: errors.array()});
   }
 };
 
@@ -42,17 +43,17 @@ const modifyCat = async (req, res) => {
   if (result.affectedRows > 0) {
     res.json({message: "cat updated: " + cat.id});
   } else {
-    res.status(404).json({message: 'nothing waas changed'});
+    res.status(404).json({message: 'nothing was changed'});
   }
 };
 
 const deleteCat = async (req, res) => {
-  const result = await catModel.deleteCatById(req.params.catId, res);
+  const result = await catModel.deleteCatById(req.params.catId, req.user.user_id, res);
   console.log("cat delted", result);
   if (result.affectedRows > 0) {
     res.json({message: "cat deleted"});
   } else {
-    res.status(404).json({message: 'cat not found'});
+    res.status(401).json({message: 'cat deletion failed'});
   }
 };
 

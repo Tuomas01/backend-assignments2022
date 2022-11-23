@@ -37,10 +37,15 @@ const createUser = async (req, res) => {
 const modifyUser = (req, res) => {};
 const deleteUser = (req, res) => {};
 
+const checkToken = (req, res) => {
+  res.json({user: req.user});
+};
+
 module.exports = {
   getUser,
   getUsers,
   modifyUser,
   createUser,
-  deleteUser
+  deleteUser,
+  checkToken
 }
