@@ -2,6 +2,7 @@
 // catController
 const catModel = require('../models/catModel');
 const {validationResult} = require ('express-validator');
+const {makeThumbnail} = require('../utils/image');
 
 const getCats = async (req, res) => {
   const cats = await catModel.getAllCats(res);
@@ -22,6 +23,7 @@ const createCat = async (req, res) => {
   if (!req.file) {
     res.status(400).json({message: "file missing or invalid"});
   } else if (errors.isEmpty()) {
+    await makeThumbnail(req.file.path, req.file.filename);
     const cat = req.body;
     cat.owner = req.user.user_id;
     cat.filename = req.file.filename;
@@ -49,7 +51,7 @@ const modifyCat = async (req, res) => {
 
 const deleteCat = async (req, res) => {
   const result = await catModel.deleteCatById(req.params.catId, req.user.user_id, res);
-  console.log("cat delted", result);
+  console.log("cat deleted", result, "info:", req.params, ":D", req.user);
   if (result.affectedRows > 0) {
     res.json({message: "cat deleted"});
   } else {

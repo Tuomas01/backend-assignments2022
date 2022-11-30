@@ -10,6 +10,7 @@ const port = 3000;
 
 // server uploaded files
 app.use(express.static("uploads"));
+app.use('/thumbnails', express.static('thumbnails'));
 
 app.use(cors());
 app.use(express.json());
