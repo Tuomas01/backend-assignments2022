@@ -25,9 +25,6 @@ passport.use(
       if (!passwordOK) {
         return done(null, false, { message: "Incorrect password." });
       }
-      if (password !== user.password) {
-        return done(null, false, { message: "Incorrect password." });
-      }
       // use spread syntax to create shallow copy to get rid of binary row type
       return done(null, { ...user }, { message: "Logged In Successfully" });
     } catch (err) {
